@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Estilos de encabezado */
+    header {
+      background-color: #000000;
+      color: #fff;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo img {
+      width: 200px;
+      height: 100px;
+      margin-right: 10px;
+    }
+    
+    .search-bar {
+      display: flex;
+      align-items: center;
+    }
+    
+    #search-input {
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+      margin-right: 10px;
+    }
+    
+    #search-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    
+    /* Estilos de productos */
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    .producto {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+    }
+    
+    .producto img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+    
+    .producto-info {
+      flex-grow: 1;
+    }
+    
+    .precio {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    /* Estilos de mensaje de producto no encontrado */
+    #no-product-message {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    function buscarProducto() {
+      var input = document.getElementById('search-input').value.toLowerCase();
+      var productos = document.getElementsByClassName('producto');
+      var productoEncontrado = false;
+
+      for (var i = 0; i < productos.length; i++) {
+        var nombre = productos[i].getElementsByClassName('producto-info')[0].getElementsByTagName('h2')[0].innerText.toLowerCase();
+        if (nombre === input) {
+          productos[i].style.display = 'block';
+          productoEncontrado = true;
+        } else {
+          productos[i].style.display = 'none';
+        }
+      }
+
+      if (!productoEncontrado) {
+        document.getElementById('no-product-message').style.display = 'block';
+      } else {
+        document.getElementById('no-product-message').style.display = 'none';
+      }
+    }
+    
+    function mostrarTodosLosProductos() {
+      var productos = document.getElementsByClassName('producto');
+
+      for (var i = 0; i < productos.length; i++) {
+        productos[i].style.display = 'block';
+      }
+
+      document.getElementById('no-product-message').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://lh3.googleusercontent.com/pw/AJFCJaWQuuhL8pZ8hlMm3ilZWAXSIbGQIFZITXHm4I_X-PRDwyaCDPm7ON1oK_y2qQ5TPSGIs69jQXwMZc78KyD086gnIQLz5J9L0i0489JnwybEfufgObi9YgXGTYmW-swRi08mFzV4DJefG3iUlXE5zHI4HbWjNf2e60RgWmZTkoLl-udIDPAQw7Rq7JyGTm3Wh51js8el86jjAKf9Zs9r9nxyepUFpOC_C2hK_0HQpchvD0nfypFKl6b8lY9YVPhFPf-sCwbgTtF9N2IgRVQ4Xzunnon5RKVdQ4nuSXZYmdM2PudJP1W8kCt5DsECCK3hLWtpzDVBoIfzMDSV4C_B1Aa-SVJi0NZFduMxXFPgJSF5d07EM_hoXBdfAVygunX2-Jc9k4BfXVptKhLBp8NxWbsNZddGNuTKebETKghxb-9_j3VS51y24MP158AKe4-foOLsFkE60tokoVKLb00NxZWb6yXbRYQ4g_cqABsdH-FltblhVd6OLXMG3p5e0PEDkYUYCwQDef7AZFBrx8E9BF-3hanpzX9Z9nYOMSuiBoxeg1F2QQWsC2kOqAEwzA-gwxI8ySwnjf3GHeFXbOeIOMys0vz0MLsZ2QlWu3mU9-NLtQ6reclGWTzn4loAugjpUKTy4ZiFvAGURIierY4YkVZz4A08lsSJ1CjUXlLQ6ifGICwOcCK2GNgoKYr5jYVhJ6IReIyZ6Gwfz2as6H54k3LnF5tjrt2Yl4_8GwBV72MvHjC46LgQxO3XawRoBbnwjzurU17hcRIC2pVx1AxRL5UMywMMxjBV9ew81-XhEhrJ8R2YMreS08gynlJoOh_zkrsGKGAzpqClPXBioGmZvmOHfvxWNA7On4evUsuHKjmgAn7VsMEixFE0_F_o93o2ganvv_8jwgcAWNPviGmgwonRjVywP-MIRN1KdIdp4oDGcpBv0cqo7niiEK-0Prr9NmjKljI-yDghSvWzPQMD2rXWtg=w990-h567-s-no?authuser=0" alt="Logo de la tienda">
+      <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ------Catálogo de Productos Centro Automotriz Madrid</h1>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Buscar productos...">
+      <button id="search-button">
+        <img src="https://lh3.googleusercontent.com/pw/AJFCJaUHOcW85mwAvlr-gjFRhbAbtYMBcJTGLME92A8aeGilzh6VDpq3F1WCcJfS6Z0SDrJg3a9-SBmB41MiyIR0H_yy04dL231Z7W2LwLi5-0H6GVquAdu4w0Udf5Ux4CGReczJxBqUNV42DY9Pf5Du2jktqNh7C5yVscELnaLD375F3xaIqElidc2gqRN3yBcjGgDTtPiTLbNVV_yrtVv5eEBrVj2hG5udcZ9gyjz_UEEgXq3nJ45WUoz4Xhxd7p-pZe2lvalSjoo7o6V6J0CH8boNQ9QI4qXj0hKp9tTiIPkdov8hfQA0XAMKd9eJMML8D2RhOENqqWmI__jFFk1lzwVd_4pJR7BVnBaPu7SylIauNyOQ1UxJEab5WHfKwMBgnh5cptlNv86N6NGXqDxgB6z32O52kQxifiNkBvJw5qPydfN5RNqyeQ2XuNUMUW5vAdLb3rafeikuOXmue39z_hlzACoE3Ao3h5rggutPTR-9dH5XypRmSuxLLIAtQMX5GdQdR9ISiu8q2JdrEVbHLSvCDtmve3urc3zAZB7Bqm08diav4-YfoP-oEAB8B_PzqIgczhjJTZHvtIkkCAcwIWGyAbOMvts32amoMwLKePsAtl2qxuPwNETSX9DsZAReCKsNkQO9A5cb4XKikggEagM-D1WikWt6DZyr2OGhPOc_Qz8eGzTA3Alovx5sNqI4fPfohNNsmOC9dyrW-xJfuOoVJ5QLGUbVQmOzhHjZtOeqnjnNpyHRSwXgSRDXNKwI0lOC1rk05dhzUdIFgR2qSEDbLrql2Z3vhUZzllFexiRWBL-GU4DmlCvm6yzGqTrwpVnV0C4tveBgIzbu1GAfR7yfFX_sN8HU5Tl0Qbamz5fM60NYmazco9QqIlS6A8Leojoq5VpUrnhGbtwjHNqUJF3Pa0vtqGokasqcX7_zumFsJIDTtgOhPkirM9D57JVMx2qT4G-BbZreMhyttGsc_Snteg=w12-h12-s-no?authuser=0" alt="Buscar" onclick="buscarProducto()">
+      </button>
+    </div>
+  </header>
+  <div class="container">
+    <div class="productos">
+      <div class="producto">
+        <img src="https://lh3.googleusercontent.com/pw/AJFCJaXqXqd1NdwZ66lkFRKPBY7sWjnBG4yCrnofnSxrF95nkhBSrfh1pqKis7stg1rfGDU3OTkEZ5wiJ_-AhAWeR7S4Ncp7OzBxJ338pg1tcd8KaByBmByH75hzDgqlajzU9xOHrCEbhIpa_URUHjYtTS8m3jasLSBEriUiIA1eQ1GkjnfmU_uPDQJYgF_ZEiH31DuinPa9x0KGuJqaidvHrHUK4pd0CZygMZJ5xJmzfG5bHutjGB0-Vhuyiyrje-HmdduXZuhzLGDeMIXFrkaUHXzwzeDho42uaZiQRA6S1b8O0Jq4r8xw9FGek-nihlSVd0TypILlOLxA67qMeeoCN8S491USjgEhKsMs_6vQcyYNKxLSjiW_od4A13fuTxbT3_J_Olw7FghMaBDbub_S_ccaLWDzLTHViXU5PscqPBwAIz45k9bZ8lgF6Hpge-8dSslfpH6mejJHOJdroZcSodkFSSYjELthm2ScogzrX1UvvPe-8-lt9ZW90pCzpOUdNzLXzIAkqQC2nIwJRPzWdRCMifohEmY1FGNSCtjw6tNy0nLbNsKX10E6L0r1VrXzi9AmCj9Dw-VBlQectb90zoUfe5O_V3ISwUtZlctbkP2wrwjqbDmcD5ncoMknURXvB-mAbV9q8DE4NhqS-CekYb1xqFSEhPZJQvlorx-wuvAnUb7s6nRJyG2E0A6Zrf39DTxnU2ida0TgvuAE12E3SFLsAPIpzP-RYCcMrfDzhZ9VlDHh_vBk33s0wIhzxKb2mP3w9VZj-Ckg7qaPvaVXjrMeP3uYmgAWJnpW75FsZfL73Yq7orR4O2MGnz5YJPgx9t3kpAkN-b86Sdv6fiAEEN5NbxNDFBkSHRCRwHpGwjb9zEasXFI5RS-7lkmZhgXjbNAY1lB3w8qjHPfgChHbidgKRdqlTcKz1pmyqtTaNplGNay-ukVn29UgQJfa0FlroXj168mqowlGFVjYkcIgKVjnzw=w960-h883-s-no?authuser=0" alt="Producto 1">
+        <div class="producto-info">
+          <h2>Galon Motul 10w30 Synthetic</h2>
+          <p class="precio">Q 350</p>
+        </div>
+      </div>
+      <div class="producto">
+        <img src="https://lh3.googleusercontent.com/pw/AJFCJaVuYEA9Ujqt28v4g4YdYUargIYY-K9XomEe1t5Wu1EIIW5wA9G58By7pMreOs4kpDImx0FZK37HupuQukhuwWWroE1eaQAXaWidU7Yi7e2E14iAvqFALkO_DRGdxDmQ8XVzjXHunltV5R-D5Tq3VBdbqLlL1ilLNqIOEK3szdLiaZHOvinNt5BAYoZAKzOeyOEEIkhDZCcG9hhO3UBu5GvnAhIGi3FRzXeMsrBug1NU9FAg5UCl0mdqx3NYXvFUipPfdb2i8t8GdMeNxPPAqkdlSkBF0wtvKU-ju1XBg7rzHBgTIGij2H8IFVoFgzkCQGS4MLwO8mwli7bpE1SyMUSa8pZq0B4MSo-E3HKlkWS2IZJ-pbJuy6Z1qH8ivkG-Hv0aYXuNrv0VsaDglfCZd602YY4fDpO01n92KSpgwthJ3xe_KtlVejDIVSFlzWYt7NHe44byHmMDKz_FIxCYbliCQnSc_BM0KjQ_pFGakPRIoeLH1DAYvVtVXx812-9T28aygFJ3xHoimDC5DAxlQm5o4XK7Pi4ODSseLxio3cx_sKF23grPGv_OjUZzY9XXxNGW7lkZQ6XKOWYnZ48mVe6Wq1IdBFtvEVtMk9XNVKYxWvIwXFB2w3uDBAk7fhLnhV-PY8-BRQfM-_c0n2b_w9j9aFAOSLN4gjAcL-2V6dlPjfmQIN-18uB9q26FakQy8ahs2GdLqE0rjXr9DZEdCOkpPM0rv3ZRb6xjpLpIMDeDgYDiP5vXpxmolbs4DLnFh7t8dtoUaLcMJhZc5gQ4pCz7wLVmM460fyBOb3grzHo6JOciQyzgoD09joRsPg_TFzqX5DQvIniEyLMi5xOZTtz1SH2QruL6-ZfS3su3pKpxHrj1zeFDZsKj3pgxO4VqWl9OWZPljuL1lo7epy1WtcdRaVppomcKutrCtEm6jYpBMfdV1f2j0975-lhyB7oSjGN-icl5cdPwgmcl6NSJrblfdw=w650-h650-s-no?authuser=0" alt="Producto 2">
+        <div class="producto-info">
+          <h2>Garrafa Quaker 20w50</h2>
+          <p class="precio">Q 320</p>
+        </div>
+      </div>
+      <div class="producto">
+        <img src="https://lh3.googleusercontent.com/pw/AM-JKLVT2VeExgsVBS5eUToqEDy2p23nvU7yrS-2FPlsBvi34wIAYZvLUDXsPRYIAg6sle9JSVuzfg0C1Yk0U3BUI-RZvo32bFr59SLA-pMH5nhTZQU_6X5N_O8E_6E2xSEdLgP6tvj4BiqOLj9DdH2-iAJIZg=w300-h300-p-k-no-nu?authuser=0" alt="Producto 3">
+        <div class="producto-info">
+          <h2>Frenos para autos</h2>
+          <p class="precio">$80</p>
+        </div>
+      </div>
+    </div>
+    <p id="no-product-message" style="display: none;">No se encontraron productos.</p>
+    <button onclick="mostrarTodosLosProductos()">Mostrar todos los productos</button>
+  </div>
+</body>
+</html>
