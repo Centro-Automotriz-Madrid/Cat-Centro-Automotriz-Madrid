@@ -109,6 +109,9 @@
 
   </style>
   <script>
+      window.addEventListener('DOMContentLoaded', function() {
+      mostrarTodosLosProductos();
+    });
     function buscarProducto() {
       var input = document.getElementById('search-input').value.toLowerCase();
       var productos = document.getElementsByClassName('producto');
