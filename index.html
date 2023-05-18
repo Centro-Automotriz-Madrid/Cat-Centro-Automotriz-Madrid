@@ -28,10 +28,19 @@
       align-items: center;
     }
     
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
     .logo img {
-      width: 200px;
+      width: 150px;
       height: 100px;
       margin-right: 10px;
+    }
+    
+    .logo h1 {
+      margin: 0;
     }
     
     .search-bar {
@@ -89,17 +98,18 @@
       text-align: center;
       margin-top: 20px;
     }
-      .foto-links {
+
+    .foto-links {
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       display: flex;
     }
     
     .foto-link {
-      margin: 0 10px;
+      margin: 0 15px;
     }
     
     .foto-link img {
@@ -107,11 +117,28 @@
       height: 50px;
     }
 
+.foto-links-container {
+  text-align: center;
+  position: absolute;
+  bottom: -500px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+    #mostrar-button {
+      display: none;
+    }
   </style>
   <script>
-      window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', function() {
       mostrarTodosLosProductos();
+      document.getElementById('search-input').addEventListener('keydown', function(event) {
+        if (event.keyCode === 13) {
+          buscarProducto();
+        }
+      });
     });
+    
     function buscarProducto() {
       var input = document.getElementById('search-input').value.toLowerCase();
       var productos = document.getElementsByClassName('producto');
@@ -132,6 +159,8 @@
       } else {
         document.getElementById('no-product-message').style.display = 'none';
       }
+
+      document.getElementById('mostrar-button').style.display = 'inline-block';
     }
     
     function mostrarTodosLosProductos() {
@@ -142,6 +171,8 @@
       }
 
       document.getElementById('no-product-message').style.display = 'none';
+
+      document.getElementById('mostrar-button').style.display = 'none';
     }
   </script>
 </head>
@@ -149,72 +180,123 @@
 <body>
   <header>
     <div class="logo">
-      <img src="https://lh3.googleusercontent.com/pw/AJFCJaWQuuhL8pZ8hlMm3ilZWAXSIbGQIFZITXHm4I_X-PRDwyaCDPm7ON1oK_y2qQ5TPSGIs69jQXwMZc78KyD086gnIQLz5J9L0i0489JnwybEfufgObi9YgXGTYmW-swRi08mFzV4DJefG3iUlXE5zHI4HbWjNf2e60RgWmZTkoLl-udIDPAQw7Rq7JyGTm3Wh51js8el86jjAKf9Zs9r9nxyepUFpOC_C2hK_0HQpchvD0nfypFKl6b8lY9YVPhFPf-sCwbgTtF9N2IgRVQ4Xzunnon5RKVdQ4nuSXZYmdM2PudJP1W8kCt5DsECCK3hLWtpzDVBoIfzMDSV4C_B1Aa-SVJi0NZFduMxXFPgJSF5d07EM_hoXBdfAVygunX2-Jc9k4BfXVptKhLBp8NxWbsNZddGNuTKebETKghxb-9_j3VS51y24MP158AKe4-foOLsFkE60tokoVKLb00NxZWb6yXbRYQ4g_cqABsdH-FltblhVd6OLXMG3p5e0PEDkYUYCwQDef7AZFBrx8E9BF-3hanpzX9Z9nYOMSuiBoxeg1F2QQWsC2kOqAEwzA-gwxI8ySwnjf3GHeFXbOeIOMys0vz0MLsZ2QlWu3mU9-NLtQ6reclGWTzn4loAugjpUKTy4ZiFvAGURIierY4YkVZz4A08lsSJ1CjUXlLQ6ifGICwOcCK2GNgoKYr5jYVhJ6IReIyZ6Gwfz2as6H54k3LnF5tjrt2Yl4_8GwBV72MvHjC46LgQxO3XawRoBbnwjzurU17hcRIC2pVx1AxRL5UMywMMxjBV9ew81-XhEhrJ8R2YMreS08gynlJoOh_zkrsGKGAzpqClPXBioGmZvmOHfvxWNA7On4evUsuHKjmgAn7VsMEixFE0_F_o93o2ganvv_8jwgcAWNPviGmgwonRjVywP-MIRN1KdIdp4oDGcpBv0cqo7niiEK-0Prr9NmjKljI-yDghSvWzPQMD2rXWtg=w990-h567-s-no?authuser=0" alt="Logo de la tienda">
-      <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ- - - - - - -Catálogo de Productos Centro Automotriz Madrid</h1>
+      <img src="https://i.imgur.com/G4sGHF6.png" alt="Logo de la tienda">
+      <h1>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ<p>&nbsp;Catálogo de Productos Centro Automotriz Madrid<p></h1>
     </div>
 
     <div class="search-bar">
       <input type="text" id="search-input" placeholder="Buscar productos...">
       <button id="search-button">
-        <img src="https://lh3.googleusercontent.com/pw/AJFCJaUHOcW85mwAvlr-gjFRhbAbtYMBcJTGLME92A8aeGilzh6VDpq3F1WCcJfS6Z0SDrJg3a9-SBmB41MiyIR0H_yy04dL231Z7W2LwLi5-0H6GVquAdu4w0Udf5Ux4CGReczJxBqUNV42DY9Pf5Du2jktqNh7C5yVscELnaLD375F3xaIqElidc2gqRN3yBcjGgDTtPiTLbNVV_yrtVv5eEBrVj2hG5udcZ9gyjz_UEEgXq3nJ45WUoz4Xhxd7p-pZe2lvalSjoo7o6V6J0CH8boNQ9QI4qXj0hKp9tTiIPkdov8hfQA0XAMKd9eJMML8D2RhOENqqWmI__jFFk1lzwVd_4pJR7BVnBaPu7SylIauNyOQ1UxJEab5WHfKwMBgnh5cptlNv86N6NGXqDxgB6z32O52kQxifiNkBvJw5qPydfN5RNqyeQ2XuNUMUW5vAdLb3rafeikuOXmue39z_hlzACoE3Ao3h5rggutPTR-9dH5XypRmSuxLLIAtQMX5GdQdR9ISiu8q2JdrEVbHLSvCDtmve3urc3zAZB7Bqm08diav4-YfoP-oEAB8B_PzqIgczhjJTZHvtIkkCAcwIWGyAbOMvts32amoMwLKePsAtl2qxuPwNETSX9DsZAReCKsNkQO9A5cb4XKikggEagM-D1WikWt6DZyr2OGhPOc_Qz8eGzTA3Alovx5sNqI4fPfohNNsmOC9dyrW-xJfuOoVJ5QLGUbVQmOzhHjZtOeqnjnNpyHRSwXgSRDXNKwI0lOC1rk05dhzUdIFgR2qSEDbLrql2Z3vhUZzllFexiRWBL-GU4DmlCvm6yzGqTrwpVnV0C4tveBgIzbu1GAfR7yfFX_sN8HU5Tl0Qbamz5fM60NYmazco9QqIlS6A8Leojoq5VpUrnhGbtwjHNqUJF3Pa0vtqGokasqcX7_zumFsJIDTtgOhPkirM9D57JVMx2qT4G-BbZreMhyttGsc_Snteg=w12-h12-s-no?authuser=0" alt="Buscar" onclick="buscarProducto()">
+        <img src="https://i.imgur.com/DscDLz1.png" alt="Buscar" onclick="buscarProducto()">
       </button>
     </div>
   </header>
   <div class="container">
     <div class="productos">
       <div class="producto">
-        <img src="https://lh3.googleusercontent.com/pw/AJFCJaXqXqd1NdwZ66lkFRKPBY7sWjnBG4yCrnofnSxrF95nkhBSrfh1pqKis7stg1rfGDU3OTkEZ5wiJ_-AhAWeR7S4Ncp7OzBxJ338pg1tcd8KaByBmByH75hzDgqlajzU9xOHrCEbhIpa_URUHjYtTS8m3jasLSBEriUiIA1eQ1GkjnfmU_uPDQJYgF_ZEiH31DuinPa9x0KGuJqaidvHrHUK4pd0CZygMZJ5xJmzfG5bHutjGB0-Vhuyiyrje-HmdduXZuhzLGDeMIXFrkaUHXzwzeDho42uaZiQRA6S1b8O0Jq4r8xw9FGek-nihlSVd0TypILlOLxA67qMeeoCN8S491USjgEhKsMs_6vQcyYNKxLSjiW_od4A13fuTxbT3_J_Olw7FghMaBDbub_S_ccaLWDzLTHViXU5PscqPBwAIz45k9bZ8lgF6Hpge-8dSslfpH6mejJHOJdroZcSodkFSSYjELthm2ScogzrX1UvvPe-8-lt9ZW90pCzpOUdNzLXzIAkqQC2nIwJRPzWdRCMifohEmY1FGNSCtjw6tNy0nLbNsKX10E6L0r1VrXzi9AmCj9Dw-VBlQectb90zoUfe5O_V3ISwUtZlctbkP2wrwjqbDmcD5ncoMknURXvB-mAbV9q8DE4NhqS-CekYb1xqFSEhPZJQvlorx-wuvAnUb7s6nRJyG2E0A6Zrf39DTxnU2ida0TgvuAE12E3SFLsAPIpzP-RYCcMrfDzhZ9VlDHh_vBk33s0wIhzxKb2mP3w9VZj-Ckg7qaPvaVXjrMeP3uYmgAWJnpW75FsZfL73Yq7orR4O2MGnz5YJPgx9t3kpAkN-b86Sdv6fiAEEN5NbxNDFBkSHRCRwHpGwjb9zEasXFI5RS-7lkmZhgXjbNAY1lB3w8qjHPfgChHbidgKRdqlTcKz1pmyqtTaNplGNay-ukVn29UgQJfa0FlroXj168mqowlGFVjYkcIgKVjnzw=w960-h883-s-no?authuser=0" alt="Producto 1">
+        <img src="https://i.imgur.com/FXTviNS.png" alt="Producto 1">
         <div class="producto-info">
           <h2>Galon Motul 10w30 Synthetic</h2>
           <p class="precio">Q 350</p>
         </div>
       </div>
       <div class="producto">
-        <img src="https://lh3.googleusercontent.com/pw/AJFCJaVuYEA9Ujqt28v4g4YdYUargIYY-K9XomEe1t5Wu1EIIW5wA9G58By7pMreOs4kpDImx0FZK37HupuQukhuwWWroE1eaQAXaWidU7Yi7e2E14iAvqFALkO_DRGdxDmQ8XVzjXHunltV5R-D5Tq3VBdbqLlL1ilLNqIOEK3szdLiaZHOvinNt5BAYoZAKzOeyOEEIkhDZCcG9hhO3UBu5GvnAhIGi3FRzXeMsrBug1NU9FAg5UCl0mdqx3NYXvFUipPfdb2i8t8GdMeNxPPAqkdlSkBF0wtvKU-ju1XBg7rzHBgTIGij2H8IFVoFgzkCQGS4MLwO8mwli7bpE1SyMUSa8pZq0B4MSo-E3HKlkWS2IZJ-pbJuy6Z1qH8ivkG-Hv0aYXuNrv0VsaDglfCZd602YY4fDpO01n92KSpgwthJ3xe_KtlVejDIVSFlzWYt7NHe44byHmMDKz_FIxCYbliCQnSc_BM0KjQ_pFGakPRIoeLH1DAYvVtVXx812-9T28aygFJ3xHoimDC5DAxlQm5o4XK7Pi4ODSseLxio3cx_sKF23grPGv_OjUZzY9XXxNGW7lkZQ6XKOWYnZ48mVe6Wq1IdBFtvEVtMk9XNVKYxWvIwXFB2w3uDBAk7fhLnhV-PY8-BRQfM-_c0n2b_w9j9aFAOSLN4gjAcL-2V6dlPjfmQIN-18uB9q26FakQy8ahs2GdLqE0rjXr9DZEdCOkpPM0rv3ZRb6xjpLpIMDeDgYDiP5vXpxmolbs4DLnFh7t8dtoUaLcMJhZc5gQ4pCz7wLVmM460fyBOb3grzHo6JOciQyzgoD09joRsPg_TFzqX5DQvIniEyLMi5xOZTtz1SH2QruL6-ZfS3su3pKpxHrj1zeFDZsKj3pgxO4VqWl9OWZPljuL1lo7epy1WtcdRaVppomcKutrCtEm6jYpBMfdV1f2j0975-lhyB7oSjGN-icl5cdPwgmcl6NSJrblfdw=w650-h650-s-no?authuser=0" alt="Producto 2">
+        <img src="https://i.imgur.com/KDbuvXm.png" alt="Producto 2">
         <div class="producto-info">
           <h2>Garrafa Quaker 20w50</h2>
           <p class="precio">Q 320</p>
         </div>
       </div>
       <div class="producto">
-        <img src="https://lh3.googleusercontent.com/pw/AJFCJaWIQ4M0S03ItmKNlU2Vi-nZ3f2iBV35lqjnrq3P4IOA7IyPN_qfXPUo8jYCipA0QMBLCHC9bK4HYgD1k0hfgFIJVNrtTmSFk30Ov55T-0OiprQIXP8daNYYeESrqL6NOamIzVzHSZvXpjxtsEi1-WOssBCTc1nePMrkB1A3Y1YI-nLOqpaPu2zfY7ApcyZa1_K5CNDrnw_a6jpaI8xtJ0-Wkr-b942-m5zlY0RM-Z0fCdQzdhS7acAS4wEKIgfjzkXN4JLZOSV44wkcQ2SIdRBleAV3iD0mggRhFKSZmtmJMRXjFrcsS9IxaRgWw58rYNre3r9uR2JKEj500fOXEJTWW-n4wJ_T63BIwo87ZI5ylWPryB72lXmKfEGoEYpY8x2JI-3Qv6A0BnoyM_rB-UK1GvHv___Fx-goJZqPPo0w1XusO4NzeHlS4qHUomouyYEe-pHiQZaJBtrAvaxxzep1cJNqz8p9NPERUlSNNPFbLMkLxBBp5MePAixrvKPsxATLx2V490msy11JMSelD9T3F_XqL9yLYVW-IfTeqevJ9hujxIh1Us1KTyau3P8oTB00kihKHcS3nWApId8jGbeHMIoWmK497gc8i74huBNfpQdqnaHTnpksXbBEpdgTHB5-OJiaW-isWXqbPoUgdaP1HHD0pEMn5Uzm7ob_GGSfduqXITfFJnYoFfU-HPGi1gYqbZ92PjqiV9twb38Ch1cYg763-pMNTTObKi8VRIEoieBcZkDeqlfaGhoXRwls3KWOiQejx4PeO6ZpF6v9uDgsIMbETxFab8nmEtRb6KO9mmgnS75SKimfyO6PC97VxqnEcNTQfq-cJc1J_T2BwPb0ByN90Mn772CWBLPLfdJZ1v5BQW0zomZFY0bfnyh0T9B7OcQBENozwuAdrLRMmDWkSWBWtKg2OD4ubszP-TQa53bYORkHYepK3dop4Y9GWMDFTSdgfFi0q9d_zdnKXMmdOQ=w720-h720-s-no?authuser=0" alt="Producto 3">
+        <img src="https://i.imgur.com/xgHkV8f.png" alt="Producto 3">
         <div class="producto-info">
           <h2>Bombilla LED</h2>
           <p class="precio">Q 150</p>
         </div>
       </div>
       <div class="producto">
-        <img src="https://lh3.googleusercontent.com/pw/AJFCJaVuxq5b1NU51r3wRepWH8t1VV5Lksr7NkrERqig09Xem5UIw7F4kALg2b-JGvt7qA4n_pDdcqpbVzOi3tzMM380TgtQIEi0uZF9d4pnYx0ZVRTaWqfUbCMNON2Vd1slXpMYmaKnO5pgJZTyTXIUna5Dm0wy1BNZfzz6m6U3phXG0lCvXTkh81TWyMY3UBHEoUw2Jl8E8OZyE0-SbKUt6Wa94vcEL9v0QQzUBynEdeCLVpurvYrIfY_TeILqXzyf9JGISLcFXiSTYk-gyA7NWuZPdxUdByaChA7cbG77yMVfnbfrPhzCaJG6FY5uu-K2dsgJoGS7l11VRmDcnE5mH5XOG6cqK7NwVAN-IHreFyb_LA6JKj30v3SX3R9CHfmmwU5dBo8meVFJiK_xLFnlOMUN3hv3NeO23AgxF__S0ZCnk4W5hXzImSrN0mjc1QrIauGtgofHI6eVuCR1fStOqEc45OJqFJrsuKl_fU9MnjqWc0b3hVqT6WVgBWOCPMYH3lLm2OKLk6L6sAAoYzCKHIbxutVYoe-aGU51fdpwiSTL15JtOeG1EyNUsGng3sLfTwxt6zN8guTrH6fbEsSqno0jVIYxTPFu4QVobXTlMxMCDFhC_9ES9RvN5MVcc8Mi5zuDbvU0v0r39ms0EZOPPlt0XS3t1-shHtQnC3ThMM3Jyb4a6msouSrIHw3asfT2h_c9WPpAs0-1jRrTt6rlhruPKb_msg0VprGIJDpcf3gtmo6cFb8EyP35sg8DVj4lFQqivkUWjlUcCqotLsEydoPMIAIJ6Pb0FpPDhzkPICXa0W6GPqoW9K63PuhvpZ9WF_6dO1j-atOP6-tvqqNuujYX6Z3ZpUQO7sN8YNq7bJINvzm866uqM9wKc0JELMllc-N-JHDXlFnBViv7foPAUAoWKfqyweD76InqsRsQji8AfHk9573FWbMonMvAneXF_P0Ek_ITFGWCsPB9Lpkz14Xisg=w276-h437-no?authuser=0" alt="Producto 3">
+        <img src="https://i.imgur.com/S7MaJOC.png" alt="Producto 4">
         <div class="producto-info">
           <h2>Garrafa Valvoline 5w30 Full Synthetic</h2>
           <p class="precio">Q 575</p>
         </div>
       </div>
       <div class="producto">
-        <img src="https://lh3.googleusercontent.com/pw/AJFCJaXJQEOh44ogQxa0_98rz4mz5AnOgPQRYICze1g87JohvYyarC7EEL0IqFh2jxADcSPz04cpYs0yn7mnC02uIsEaj_oQX7mfMDedneH1rUAV7P3mmYjbhqWzgGs9ge9-cqqpzSMYfsvAzpU_YPRxg2hfclm24jcek522uiju46BMyxRo2Bsl_RbCOa5bjQEVypcI5v0nECKO_W7Y5rYLS0IdrUwBs2Ld6QSUMoSnP9-I1Zw2OzHz4z3S0Qrjq5-GM2X_Wi8_-WAVY1z4hAdF0ev2vTl9JNPbuzET2sxqfEly_Xf1G84OEw4zh7EDRD_B-Dl01NR490n2GrxrQ-XelhnSRcTVDXlpIi9Nwe2tYgtE9dgSKqVVHWLw8sxpAiGrHel8W64IQH-hGBm9RPHKE4At65hk2SsTqgI3qRnpPBSEM_A-E6a60HqooNDh4-lP5EdydbQ_fsv7NV8w6BHkZ9ofCmh2t4l003KBE6AwTF4EYtUehFz5N8gyi_xtb8QCPgsBtTJIxpKnJzZiiS61rUWLmyWkUhZ0d-Bnd97cm3cx1SfgtdnNHIP8v9dRHmBGCw409m8PpVCuUDUimjTwhLzjD8LaE88-w0BdY2JXwZgpPT4UQXn6LQoXvU50EvpObhxMIhHnvjb3BYywWEJ-u_IYp_l7KusdjiLUFaM0dg9zU_eGF4dh14I-4G1sRSrjg3PEYqgpo8T0Usl6IXtp55Qqji9b--5mxQ6QAblLvYUxHNxvIaW5_RRI6z_4q5A5rVTJeXO5xcYhTjBmaxndSstJqyabLM7EYv-vhOK2QWCKrk68pk62xpifwn0JCcxTDD1_CArQUTmw6VV_6CEiXbY0cmEcBv0HYGvngqqC_6u-KQdUMcwVWPJIzJlJOz5C2PxmAjONeQwVQLt7VdMFysV2JB5kZSDHGMpUQVhEr-Tqt60nI_h7tTjeF3jdebHIdhCjCyRGKc6J43yimgzzw6Dwcg=w1000-h1000-s-no?authuser=0" alt="Producto 3">
+        <img src="https://i.imgur.com/mgD9KTi.png" alt="Producto 5">
         <div class="producto-info">
           <h2>Limpiaparabrisas Bosch</h2>
-          <p class="precio">Q90 (juego)</p>
+          <p class="precio">Q 90 (juego)</p>
+        </div>
+      </div>
+      <div class="producto">
+        <img src="https://i.imgur.com/I8MM4Oo.png" alt="Producto 5">
+        <div class="producto-info">
+          <h2>Barra LED</h2>
+          <p class="precio">Q 199</p>
+        </div>
+      </div>
+    <div class="producto">
+        <img src="https://i.imgur.com/2dtUPcs.png" alt="Producto 5">
+        <div class="producto-info">
+          <h2>Filtro de Caja Automático</h2>
+          <p class="precio">Q 75</p>
+        </div>
+      </div>
+        <div class="producto">
+        <img src="https://i.imgur.com/0yhTGHD.png" alt="Producto 5">
+        <div class="producto-info">
+          <h2>Pastillas de Freno MF-700</h2>
+          <p class="precio">Q 190</p>
+        </div>
+      </div>
+            <div class="producto">
+        <img src="https://i.imgur.com/Ut242f9.png" alt="Producto 5">
+        <div class="producto-info">
+          <h2>Galon Castrol gtx 20w50</h2>
+          <p class="precio">Q 270</p>
+        </div>
+      </div>
+            <div class="producto">
+        <img src="https://i.imgur.com/7l2GzrC.png" alt="Producto 5">
+        <div class="producto-info">
+          <h2>Galon ATF Valvoline</h2>
+          <p class="precio">Q 400</p>
+        </div>
+      </div>
+      <div class="producto">
+        <img src="https://i.imgur.com/FAFapi6.png" alt="Producto 5">
+        <div class="producto-info">
+          <h2>Garrafa Eurol 20w50 Synthetic</h2>
+          <p class="precio">Q 340</p>
+        </div>
+      </div>
+        <div class="producto">
+        <img src="https://i.imgur.com/92Wpi5i.png" alt="Producto 5">
+        <div class="producto-info">
+          <h2>Galon Castrol Magnatec 20w50</h2>
+          <p class="precio">Q 270</p>
         </div>
       </div>
        </div>
 
+  <div class="foto-links-container">
   <div class="foto-links">
     <a class="foto-link" href="https://www.instagram.com/aceitera_madrid/">
-      <img src="https://lh3.googleusercontent.com/pw/AJFCJaVVRLPzx9oo-8UJrW4YoRVwGzsDCGS_lr3wDqhh3MG2mikDsYdXd6pCKi8d7IurbvTU0I2xFuTRz4LPae5TOwXXIw2bMr7MoqLJ5LTg10RfdPz3TSiGfOoNfU-xkBFM3ZnHYbBmKH2MReEhjJ6S1ASGgbm10Ox8XRt-Xtg2P15Dx4xVgSsfSZXHCbUmaziCCWNRryqYNxCX6l3FVmSvkhH5t_HYdErbQdtmobwkZLyrljkrxNGIkiu6qyeUeOJz7a5rZnhVpkzKRd6lRPIx-4ajJPgqpIfxXWs6DhnWqkkn409kthQZgV6aFrmu20iyHURQv8qN6gjwOrUocwkotS7NnleiLAhxO4Z0v0u-EMWyaaKWvx4VS0YQmy3beJnEs5htWm-l_hLCdcRKX2RJydbIvaDehlDEGvJv18-uYKIyF0EOzF8Wipc19dZt3HjyJSTuZcvap2PvTHDWUSsYbPkQdOgNGw-Q2G2MzgIr09wRm7hXjFfGL9JZqj8fiE-bAMzMFjLkY1qTnBDczqg_pHOW3g18F8iTsAifncfnm_dKTZr7OCUIkr0VsrPjkLSfy2H7rXe11CwMCzOMVUg_E7CF3HKP_PbjtJbGsdMTStVBD626TnGcQyHmC1wbIEsGy0nZoDcSioPNs0-K3xAOp3cw27yv0fOBVSO9pS19zJ__GRE6ieC_uqTcWc724gvb3M_-UwVohjpd9Lqy6qYXWBM49fYxJozwj5-qjlFPw8CUxeZBcXAExa5lBvHROT0mJ0g9G_gpVGtse5SxXRuFGC3UX06T4LYFTR9h0ChadTtmIkGqfDO0L6RIRZctYvuzLFmTZcd0WYHnWOIcC3sEe6Zpzy5QrdnfQ3LoqXPiZBBDbDxJV70Cwfvo-yWQ2zgPTI1s363cnT9gcXmkDjRZIxVfptDeFKviUh0Md5pHbLiI07vKvBL-48U5cl0hrdE8i8BFLXoBLEZwekgMAQ3yjzETdw=s328-no?authuser=0" alt="Foto 1">
+      <img src="https://i.imgur.com/9IOfWvu.png" alt="Foto 1">
     </a>
     <a class="foto-link" href="https://m.facebook.com/people/Centro-Automotriz-Madrid/100063652957834/">
-      <img src="https://lh3.googleusercontent.com/pw/AJFCJaVL64pIm--ifZM5ay-E34HoQUDL8QyNJsFRrRzXtPagZ8G-du4qBWf4Y6e1vgEv5dnoH03JcNvdopWm19Q8LKcUPer8ubyt_2yqBNtOFa5R-ZIzAykWIqZIfYEwaqhGW2ENmWJCD-Tz_jN4X0Ae2jJfHHoT9ro7QwM19_Bzjb2PzlYXX1OaMffgtjsfNRKmZiMLbnuoakgg2bX0nUH7g0j7NJcC7wJpZsTlj6ASoivzzXvyuB7S5bIm5CXLAkf9XQeTPRKWCd1kBrTx63bb9MBgcVmPSK5_TGyBR4BwgV6NOeyXPNZoS539CrYVT6Ryv53YGERNXjpHp8pvSUrTYSUjYyTlhBZBJeKOuMAVVEG_yeFKYcjIvX_tptM9wWB2xdwKD9aseQKdbAbtnxJeaKMtguoIO-feP2oZNmcxNCtpQxuWnmj-kQs8oGkWFDvUNmiAj1_c0UiKdpCbKfU6idanwab69KFj1F8vx4fHLGqFyNvpph6fw45SeXsOsiNu--YnOATApeDr4tBOcDXpeofic0qiNPRC5rfjk8OnAa-1avRokD8-NobuoEBgwUX_PYguN8-yvXhbEqvp6ielHQ5V_eUimACvYemZLnoEWhP8Zd2vzHbiPodMSbk1H2d_jfpKBnkJrcr0q0ic5Mm6yKp1M2XBkqd6hKTXDLfbpL8Z_LJj3vRXw9GTCnQGcXOhSYwwuQczH8X9p_4qPaMCvt6H84cN4kwj7hRBcygJgy6PIQkwnjGos1zGTTNhlLx8QZHIxbB3z8qqot2IKcs0EIKQAi8qzRlbyC8w1LlPpr49STFudmHcvsqUTuJLwydUpyldVXfeYKTGhM-_gCNO01BVQ3t-N70SldXvIlW9exCsujiyv2OrUiF6o6x6VVYMduxtMal68rXBQ9B0RQZwuydlV5c9FgpiAxoxHAQ-k_2Eb5jKhpJSyYrZ7F36P5VwGZwq_1k2nFRUihkWgIpqTMb7uQ=w1540-h1540-s-no?authuser=0" alt="Foto 2">
+      <img src="https://i.imgur.com/Wtkkw7k.png" alt="Foto 2">
     </a>
     <a class="foto-link" href="https://www.waze.com/en/live-map/directions/aceitera-madrid-53-calle-25-13-zona-21,-guatemala?to=place.w.176619666.1765868976.14249681">
-      <img src="https://lh3.googleusercontent.com/pw/AJFCJaXyOUHzHK-axSKx9ri9p6geL7ewUUNHziCb9K5e40csO8qZcaMyq_mn7XfGYISKKU1zhsldz80M1OktdC9YfxA1M3Ve3syIgpmLvEy2U2rlJ_PD6ElFI4Jp9-qWhnP-J6QCbr1rwBof8T_Uc1_Y2r-UnZB8n8YNJyJ4yo35P0gDcOKheGo8HPQJ--VAZjoAMslHSPxgK4VPcUd4g0buUNKeimv5Qo9_ODKYGh5z2IWWEFmErszwfFfKLCuKNsnvucyRDPO6Wt7c2LPVWmO_vFPfj8S18wBx1p4aFWehaOvxL_iVR6GRytbfDR3pDxhjK2OQL8QoXaLIHeukscdprca0bdgVIje9KZ1Q75yOYhaXRjr3fVvfyv8OVyJK1FfmtSrnrQZdaMD7mhSdse24OkI9yNk5AotyavYEo_Q6onmT3RSDJFQdKqtqcgjHc3T91mEYg0woAK6zLKDmWdJOkacngxHJ6uJS3At3DmVuEW6OQWitqaLTUH7KngcrNTUmpdCC-WF8APneKRjKjOsP5ltWG69Z3R8nPFFl_5sqme5g08OQWhKYiijQr-olMwqWCp4ubtRaBqz-l-6omn2rTkDFUWH4VdQ8ozWgCWySZCHb8KPicyr1HxdjelhdbJdUN6TkjutI2BlBCplx32hAPDQ9q_3jH85u0TsWZnu_xYgsencHhsgdA0hSXaFyoXJIE-6Sglr9WzLazwh595yd_PTOH5cQYuQs3BDuY4zPPqpTe8ICsmwqxGYWT0LJ0m3Ixeq6H6jFpmjOTErJnxLEArBW5uBRsX5Ug0Z0gdeI7n4aYr1v1MMZ-ctrcUHjrDRYs_QayxzLoPks12tvLTXoVcBKZe9DEmhPY9Hq1x3fISYRjJi7vz3UJOqF1-EsCbbjgABxTWEJet2BbHakSuqKgQPa24qCFcH88dz6ACY0I6FZ3h3ZVwb48cQFo8RE7kZy7lavXmQgH53ijGswNPDkiZ7scw=w1074-h1054-s-no?authuser=0" alt="Foto 3">
+      <img src="https://i.imgur.com/aC3cfml.png" alt="Foto 3">
     </a>
-        <a class="foto-link" href="https://www.waze.com/es/live-map/directions/centro-automotriz-madrid-32-avenida,-jardines-de-utatlan-i-018-zona-7,-guatemala?to=place.w.176554130.1765803447.28053867">
-      <img src="https://lh3.googleusercontent.com/pw/AJFCJaWJ9BkDKPCxT8jMGlSPDxwogKLHCSFko5rZmR5sFAE_tbRKhqRb8upHWT548leIh2y_ob3ibCcxe-LD-d7uJmB5jIqduw9egZrHZIXJ_ohaBHWwMjo_hewKqmj0L6f36W0wYicxcliht4aL1IsMGxqgyb1ypk_lLfbqQZmuIeXcHgV6bUilH8n_ZT22C4o0aZ08kElogLbW3jbQwVvYZXgrzi0olytdPr3qp4jm6OvYP0E9KTR8A3s5-Cpjw4apevEka540NoFarJNXs02RlWVuLnKE8l1cyu86cpBDWBCrsPIYFq3F5PHE6Y3whjIvVu0_pxN1aom5iToXmOQvsI_tWroa8F9gyOM59U0tUgiKa6B5OwXr05niwJm324bzBdSWj3gU3jpr-g2nhZTR0WPnQM8NAAacdXd1JSo9VaBg2cAP6jZ-xS6uqCSkYVY1-hGrA6s_QjIpOtZQJWub7zwmS3glDBtBy70QH892SG3j-jE5zbKVenNbwUFp2DYhviR0d9pCco3yjDndLTgJ8yWwQjtjzUhSJXaKXXkrd9EliKGULN6BT4EuNUrXAX-WX5_8CQA3vVwcZ_x7AeSA9PXRvseabSynmJnKgv_OUUl6a7hWjMRr-IOICXAe7tGVZAIBasdAIJVFJV8xbnz6K9ws5kfVbrt2jtVjUbuGM3v4w7wo7pezGQ86CPkT3SG0UMW5vaKIAJI1YEmadUSIc-MTjHPv-Lpaz97g8l4zKCtBZRrnUa_Ovkt_vfpSYPndKl5HMROobDEcXH8EWPMMXnF3HpzeyTUNAemwKIButZugCchxjMA1VeViXBqqCQCfY233EeI6625wCxwRyUylWxXjhoOsyBljMnky5lJw4dpP86bZ0DoKQmDO07fpz3BYDD5jUa6TEhyBMyDOtvtNiEePZYTXm3025a-fOTmEtQZaVQ8WoOtNl0grY6ZU8URKFx_zNp9Mtk8zB7qeo13qxt76Fw=w1052-h1060-s-no?authuser=0" alt="Foto 3">
+    <a class="foto-link" href="https://www.waze.com/es/live-map/directions/centro-automotriz-madrid-32-avenida,-jardines-de-utatlan-i-018-zona-7,-guatemala?to=place.w.176554130.1765803447.28053867">
+      <img src="https://i.imgur.com/gzhWdNu.png" alt="Foto 4">
     </a>
-    </div>
+  </div>
+</div>
     <p id="no-product-message" style="display: none;">No se encontraron productos.</p>
-    <button onclick="mostrarTodosLosProductos()">Mostrar todos los productos</button>
+    <button id="mostrar-button" onclick="mostrarTodosLosProductos()" style="display: none;">Mostrar todos los productos</button>
   </div>
 </body>
 </html>
